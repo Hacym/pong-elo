@@ -14,11 +14,6 @@ get '/' do
     erb :index
 end
 
-get '/admin' do
-    erb :index
-end
-
-
 # Players API routes
 get '/api/v1/players/:player_id?' do
     content_type :json
@@ -32,9 +27,9 @@ get '/api/v1/players/:player_id?' do
 
         if players.nil?
             {"error": "No players found."}.to_json
+        else
+            all_players.to_json
         end
-
-        all_players.to_json
 
     else
         begin
